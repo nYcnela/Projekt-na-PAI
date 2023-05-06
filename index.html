@@ -57,7 +57,7 @@
       <div class="nav-items">
         <a href="#gardens" class="nav-item">Ogrody</a>
         <a href="#offers" class="nav-item">Oferty</a>
-        <a href="#reviews" class="nav-item">Opinie</a>
+        <a href="#registration" class="nav-item">Zgłoszenie</a>
         <a href="#contact" class="nav-item">Kontakt</a>
       </div>
     </nav>
@@ -70,7 +70,7 @@
     </header>
 
     <main class="main">
-      <section class="gallery section-padding">
+      <section class="gallery section-padding white-section">
         <div class="wrapper">
           <h2 class="section-heading">Galeria zdjęć</h2>
           <!-- karuzela z bootstrapa -->
@@ -123,7 +123,7 @@
         <hr />
       </section>
 
-      <section class="gardens section-padding" id="gardens">
+      <section class="gardens section-padding white-section" id="gardens">
         <div class="wrapper">
           <h2 class="section-heading">Polecane ogrody</h2>
 
@@ -193,9 +193,9 @@
         <div class="wrapper">
           <div class="offers-box">
             <div class="offers-option">
-              <img src="" alt="doUzupelnienia" class="offers-option-img" />
+              <img src="" alt="wyjazdWPojedynke" class="offers-option-img" />
               <div class="offers-option-info">
-                <h3 class="offers-option-heading">nazwa1</h3>
+                <h3 class="offers-option-heading">Wyjazd w pojedynkę</h3>
                 <p class="offers-option-text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea odio, eligendi praesentium illum fugit dignissimos mollitia
                   atque adipisci dolorum ad.
@@ -205,9 +205,9 @@
               </div>
             </div>
             <div class="offers-option">
-              <img src="" alt="doUzupelnienia" class="offers-option-img offers-option-img-right" />
+              <img src="" alt="wyjadzWDwojke" class="offers-option-img offers-option-img-right" />
               <div class="offers-option-info">
-                <h3 class="offers-option-heading">nazwa2</h3>
+                <h3 class="offers-option-heading">Wyjazd w dwójkę</h3>
                 <p class="offers-option-text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea odio, eligendi praesentium illum fugit dignissimos mollitia
                   atque adipisci dolorum ad.
@@ -217,9 +217,9 @@
               </div>
             </div>
             <div class="offers-option">
-              <img src="" alt="doUzupelnienia" class="offers-option-img" />
+              <img src="" alt="WyjazdGrupowy" class="offers-option-img" />
               <div class="offers-option-info">
-                <h3 class="offers-option-heading">nazwa3</h3>
+                <h3 class="offers-option-heading">Wyjazd grupowy</h3>
                 <p class="offers-option-text">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea odio, eligendi praesentium illum fugit dignissimos mollitia
                   atque adipisci dolorum ad.
@@ -229,6 +229,56 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="registration section-padding white-section" id="registration">
+        <h2 class="section-heading">Formualrz zgłoszeniowy</h2>
+        <div class="wrapper">
+          <form class="registration-form">
+            <div class="registration-form-top">
+              <label for="name" class="registration-form-label">Imię i nazwisko:</label>
+              <input type="text" class="registration-form-input" id="name" />
+
+              <label for="email" class="registration-form-label">Adres e-mail:</label>
+              <input type="text" id="email" class="registration-form-input" />
+
+              <label for="garden">Wybrany Ogród:</label>
+              <input
+                class="registration-form-input"
+                type="text"
+                name="garden"
+                id="garden"
+                list="destination"
+                title="Wybierz ogród"
+                required
+              />
+              <datalist id="destination">
+                <option value="Ogród Kenroku-en"></option>
+                <option value="Portland Japanese Garden"></option>
+                <option value="Jardin Japonais"></option>
+              </datalist>
+              <label>Ilość osób:</label>
+              <div class="registration-form-box">
+                <input type="radio" name="numberOfPeople" id="1" value="W pojedynkę" required /> W pojedynkę
+              </div>
+              <div class="registration-form-box"><input type="radio" name="numberOfPeople" id="2" value="W dwójkę" /> W dwójkę</div>
+              <div class="registration-form-box">
+                <input type="radio" name="numberOfPeople" id="group" value="Wyjazd grupowy" /> Wyjazd grupowy
+              </div>
+              <label>Dodatkowe ubezpieczenie:</label>
+              <div class="registration-form-box"><input type="checkbox" name="insurance" id="insurance" /> Tak</div>
+            </div>
+
+            <label for="msg" class="registration-form-label">Wiadomość:</label>
+            <textarea name="" id="msg" class="registration-form-textarea"></textarea>
+            <div class="registration-btns">
+              <button class="registration-form-btn btn-special-animation">Sprawdź pogode</button>
+              <button class="registration-form-btn btn-special-animation">Przejrzyj dane</button>
+              <button type="reset" class="registration-form-btn btn-special-animation">Wyczyść</button>
+              <button type="submit" class="registration-form-btn btn-special-animation">Wyślij</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
