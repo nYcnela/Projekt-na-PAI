@@ -1,0 +1,357 @@
+:root {
+  /*zdefiniowanie kolorow uzywanych w projekcie*/
+  /* --main-color: #1755e7; */
+  --main-color: #395d44;
+  --secondary-color: #164dcc;
+  --pure-white: #fff;
+  --light-white: #eee;
+  --dark: #2e2e2e;
+  --green-color: #00ffaa;
+  /* --green-color-hover: #0fe29c; */
+  /* --green-color-hover: #0db588; */
+  --green-color-hover: #0a9b76;
+
+  --light-blue-gradient: linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75));
+
+  --blue-gradient: linear-gradient(45deg, rgba(20, 105, 241, 0.75), rgba(42, 10, 184, 0.75));
+  /* w miare jasny jest ten zielony*/
+  /* --green-gradient: linear-gradient(45deg, rgba(90, 156, 110, 0.75), rgba(34, 139, 34, 0.75)); */
+  --green-gradient: linear-gradient(45deg, rgba(70, 128, 96, 0.75), rgba(10, 100, 20, 0.75));
+
+  --purple-gradient: linear-gradient(45deg, rgba(190, 10, 214, 0.75), rgba(68, 0, 255, 0.75));
+  --blue-gradient-solid: linear-gradient(45deg, rgb(20, 105, 241), rgb(42, 10, 184));
+  /* ten jest troche ciemniejszy niz ten nizej */
+  /* --green-gradient-solid: linear-gradient(45deg, rgb(70, 128, 96), rgb(10, 100, 20)); */
+  --green-gradient-solid: linear-gradient(45deg, rgb(104, 194, 126), rgb(40, 148, 48));
+
+  --light-blue-gradient-solid: radial-gradient(circle at top right, rgb(0, 78, 255) 0%, rgb(0, 212, 255) 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* display: flex;
+	justify-content: center;
+	align-items: center; */
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  background-color: var(--pure-white);
+  /* background-color: rgb(168, 55, 55); */
+  /* background-color: #333; */
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* stylowanie guzika nawigacyjnego */
+.burger-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1em;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Stylowanie przycisku burger-menu podczas fokusowania */
+.burger-btn:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+}
+
+/* po najechaniu na guzik nawigacyjny daje animacje rozwijania belek */
+.burger-btn:hover .burger-btn-bars::after,
+.burger-btn:hover .burger-btn-bars::before {
+  width: 100%;
+}
+
+/* rozmieszczenie przycisku  */
+.burger-btn-box {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+
+/* stylowanie belek nawigacji */
+.burger-btn-bars,
+.burger-btn-bars::after,
+.burger-btn-bars::before {
+  position: absolute;
+  right: 0;
+  height: 3px;
+  content: "";
+  background-color: var(--pure-white);
+  transition: width 0.3s;
+}
+
+/* Stylowanie głównej belki przycisku burger-menu */
+.burger-btn-bars {
+  width: 100%;
+}
+
+/* Stylowanie dodatkowej belki :after przycisku burger-menu */
+.burger-btn-bars::after {
+  top: 13px;
+  width: 60%;
+}
+
+/* Stylowanie dodatkowej belki :before przycisku burger-menu */
+.burger-btn-bars::before {
+  top: 27px;
+  width: 30%;
+}
+
+/* Główne menu nawigacji */
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  transform: translateX(100%);
+  transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+  background-image: var(--green-gradient-solid);
+  z-index: 100;
+}
+
+/* Aktywne menu nawigacji - sterowane poprzez JavaScript*/
+.nav--active {
+  transform: translateX(0);
+}
+
+/* Elementy menu nawigacji */
+.nav-item {
+  position: relative;
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em 2em;
+  font-size: 2.8rem;
+  color: var(--pure-white);
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: black;
+}
+
+/* Pasek podkreślający elementy menu nawigacji */
+.nav-item::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  transform: scaleY(0);
+  background-color: var(--pure-white);
+  transition: transform 0.3s;
+  content: "";
+}
+
+/* Efekt podkreślenia elementu menu nawigacji podczas najechania myszką */
+.nav-item:hover::before {
+  transform: scaleY(1);
+}
+
+/* animacja dajaca efekt "plywajacacyh" napisow podczas wyswietlania w menu */
+@keyframes navItemsAnimation {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.nav-items-animaton {
+  animation: navItemsAnimation 1s both;
+}
+
+.black-bars-color,
+.black-bars-color::after,
+.black-bars-color::before {
+  background-color: var(--dark);
+}
+
+/* HEDER */
+/* Główny kontener nagłówka */
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  height: 75vh;
+  text-align: center;
+  color: var(--pure-white);
+  background-image: var(--green-gradient), url(../Img/DomMaly.jpg);
+  background-size: cover;
+  background-position: fixed;
+  background-attachment: scroll;
+}
+
+/* Stylowanie nagłówka wewnątrz kontenera .header */
+.header-heading {
+  font-family: "Dancing Script", cursive;
+  font-size: 4.8rem;
+  font-weight: 300;
+}
+
+/* Stylowanie tekstu wewnątrz kontenera .header */
+.header-text {
+  font-size: 1.4rem;
+}
+
+/* Stylowanie przycisku wewnątrz kontenera .header */
+.header-btn {
+  margin-top: 2em;
+  padding: 0.8em 1.6em;
+  font-size: 1.4rem;
+  background: var(--pure-white);
+  border: none;
+  border-radius: 8px;
+  color: var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.header-btn:hover {
+  color: var(--green-color-hover);
+}
+
+/* Stylowanie tła przycisku wewnątrz kontenera .header */
+.header-btn::before {
+  background-color: var(--light-white);
+}
+
+/* MAIN */
+
+/* GALERIA */
+.gallery {
+  /* cos tam */
+  color: black;
+}
+
+/* HISTORIA */
+.hero-img {
+  position: relative;
+  padding: 10em 2em;
+  text-align: center;
+  color: var(--pure-white);
+  overflow: hidden;
+  background-image: var(--green-gradient), url(../Img/DrzewkaMale.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-img-title {
+  margin-bottom: 0.5em;
+  font-family: "Dancing Script", cursive;
+  font-size: 4.8rem;
+}
+
+.hero-img-text {
+  padding: 1em 0;
+}
+
+hr {
+  background-color: var(--pure-white);
+}
+
+/* PONIZEJ SA KOMPONENTY */
+.section-heading {
+  position: relative;
+  margin-bottom: 2em;
+  font-size: 3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--main-color);
+  letter-spacing: 2px;
+}
+
+/* dodaje biale skosy po lewej badz prawej stronie w celu uzyskania ciekawego efektu wizualengo  */
+.white-block {
+  position: absolute;
+  height: 40px;
+  width: 60%;
+  background-color: var(--pure-white);
+}
+
+/* Lewy blok z białym tłem */
+.white-block-left {
+  bottom: 0;
+  left: -50px;
+  transform: skew(45deg);
+}
+
+/* Prawy blok z białym tłem */
+.white-block-right {
+  top: 0;
+  right: -50px;
+  transform: skew(45deg);
+}
+
+/* padding */
+.section-padding {
+  padding: 6em 2em;
+}
+
+/* SEKCJA MEDIA SLUZACA DO DOSTOSOWANIA STRONY DO ROZNYCH ROZDZIELCZOSCI */
+
+@media (min-width: 768px) {
+  .section-heading {
+    font-size: 3.6rem;
+  }
+
+  .section-padding {
+    padding: 8em 2em;
+  }
+
+  .hero-img hr {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  .header {
+    background-image: var(--green-gradient), url(../Img/DomDuzy.jpg);
+  }
+
+  .section-heading {
+    font-size: 3.8rem;
+  }
+
+  .section-padding {
+    padding: 10em 2em;
+  }
+
+  .hero-img hr {
+    width: 90%;
+    max-width: 900px;
+  }
+}
