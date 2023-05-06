@@ -430,7 +430,70 @@ hr {
   cursor: pointer;
 }
 .offers .offers-option-btn:before {
-  background-color: #8b9dc3;
+  background-color: var(--green-color-hover);
+}
+
+/* FORMULARZ ZGLOSZENIOWY */
+.registration {
+  position: relative;
+  background-color: var(--pure-white);
+  overflow: hidden;
+}
+
+.registration-form,
+.registration-form-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-form-box {
+  margin-bottom: 2em;
+}
+
+.registration-form-label {
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.registration-form-input {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  background-color: var(--light-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+}
+.registration-form-textarea {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  background-color: var(--light-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  min-height: 150px;
+}
+
+.registration-form-btns {
+  align-items: center;
+}
+
+.registration-form-btn {
+  align-self: flex-end;
+  align-items: center;
+  padding: 1em;
+  margin: 10px 0;
+  width: 100%;
+  /* max-width: 326px; */
+  color: var(--pure-white);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--main-color);
+  cursor: pointer;
+}
+.registration-form-btn::before {
+  background-color: var(--green-color-hover);
 }
 
 /* PONIZEJ SA KOMPONENTY */
@@ -443,6 +506,33 @@ hr {
   text-align: center;
   color: var(--main-color);
   letter-spacing: 2px;
+}
+
+/* KLASA ODPOWIADAJACA ZA ANIMACJE PRZEJSCIA NA GUZIKACH */
+.btn-special-animation {
+  position: relative;
+  transition: background-color 0.3s;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.btn-special-animation::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+.btn-special-animation:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* dodaje biale skosy po lewej badz prawej stronie w celu uzyskania ciekawego efektu wizualengo  */
@@ -529,6 +619,10 @@ hr {
     margin: 1em;
     width: 45%;
   }
+
+  .registration-form-btn {
+    width: 49.6%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -548,8 +642,12 @@ hr {
     width: 90%;
     max-width: 900px;
   }
-  .offers{
-	background-image: var(--green-gradient), url("../Img/goryOgrodDuze.jpg");
+  .offers {
+    background-image: var(--green-gradient), url("../Img/goryOgrodDuze.jpg");
+  }
+
+  .registration-form-btn {
+    width: 49.7%;
   }
 }
 
