@@ -26,7 +26,6 @@
 
   --light-blue-gradient-solid: radial-gradient(circle at top right, rgb(0, 78, 255) 0%, rgb(0, 212, 255) 100%);
   --light-green-gradient-solid: radial-gradient(circle at top right, rgb(10, 100, 20) 0%, rgb(70, 128, 96) 100%);
- 
 }
 
 *,
@@ -380,6 +379,60 @@ hr {
   background-color: var(--green-color-hover);
 }
 
+/* OFERTY */
+.offers {
+  position: relative;
+  background-image: var(--green-gradient), url("../Img/goryOgrodMale.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.offers .section-heading {
+  color: var(--pure-white);
+}
+.offers .offers-option {
+  margin: 1em 0;
+  box-shadow: 5px 5px 10px #2e2e2e2e;
+  background-color: var(--pure-white);
+  overflow: hidden;
+}
+.offers .offers-option-img {
+  width: 100%;
+  transition: transform 0.3s;
+}
+.offers .offers-option-img:hover {
+  transform: scale(1.1);
+}
+.offers .offers-option-info {
+  padding: 2em;
+  background-color: var(--pure-white);
+  z-index: 10;
+}
+.offers .offers-option-heading {
+  margin-bottom: 0.5em;
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+.offers .offers-option-text {
+  margin-bottom: 0.5em;
+  font-size: 1.3rem;
+  color: var(--dark);
+}
+.offers .offers-option-btn {
+  margin-top: 1em;
+  padding: 0.8em;
+  width: 100%;
+  color: var(--pure-white);
+  background-color: var(--main-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.offers .offers-option-btn:before {
+  background-color: #8b9dc3;
+}
+
 /* PONIZEJ SA KOMPONENTY */
 .section-heading {
   position: relative;
@@ -420,6 +473,33 @@ hr {
 }
 
 /* SEKCJA MEDIA SLUZACA DO DOSTOSOWANIA STRONY DO ROZNYCH ROZDZIELCZOSCI */
+
+@media (min-width: 576px) {
+  .offers-option {
+    display: flex;
+    margin: 2em 0;
+    width: 100%;
+  }
+  .offers-option-img {
+    width: 50%;
+    height: auto;
+  }
+  .offers-option-img-right {
+    order: 1;
+  }
+  .offers-option-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .offers-option-heading {
+    margin-bottom: 0.5em;
+    font-size: 3.6rem;
+  }
+  .offers-option-btn {
+    padding: 1em;
+  }
+}
 
 @media (min-width: 768px) {
   .section-heading {
@@ -467,6 +547,9 @@ hr {
   .hero-img hr {
     width: 90%;
     max-width: 900px;
+  }
+  .offers{
+	background-image: var(--green-gradient), url("../Img/goryOgrodDuze.jpg");
   }
 }
 
