@@ -433,6 +433,15 @@ hr {
   background-color: var(--green-color-hover);
 }
 
+.offers .offers-option-btn a:visited{
+	color: var(--pure-white);
+}
+
+.offers .offers-option-btn a:hover{
+	color: var(--pure-white);
+	text-decoration: none;
+}
+
 /* FORMULARZ ZGLOSZENIOWY */
 .registration {
   position: relative;

@@ -7,6 +7,9 @@ const form = document.querySelector(".registration-form");
 const showDataBtn = document.getElementById("data");
 const dataContainer = document.createElement("div");
 const backButton = document.createElement("button");
+const singleBtn = document.getElementById("single");
+const coupleBtn = document.getElementById("couple");
+const groupBtn = document.getElementById("group");
 
 backButton.textContent = "Wróć";
 backButton.classList.add("btn-special-animation", "registration-form-btn", "registration-form-bck-btn");
@@ -151,3 +154,12 @@ function displayStoredData() {
     alert("Pamietaj aby najpierw przeslac dane!");
   }
 }
+
+function selectNumberOfPeopleOption(id) {
+  const radioOption = document.getElementById(id);
+  radioOption.checked = true;
+}
+
+singleBtn.addEventListener("click", () => selectNumberOfPeopleOption("1"));
+coupleBtn.addEventListener("click", () => selectNumberOfPeopleOption("2"));
+groupBtn.addEventListener("click", () => selectNumberOfPeopleOption("2+"));
