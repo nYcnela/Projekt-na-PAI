@@ -433,13 +433,17 @@ hr {
   background-color: var(--green-color-hover);
 }
 
-.offers .offers-option-btn a:visited{
-	color: var(--pure-white);
+.offers .offers-option-btn a{
+	display: block;
 }
 
-.offers .offers-option-btn a:hover{
-	color: var(--pure-white);
-	text-decoration: none;
+.offers .offers-option-btn a:visited {
+  color: var(--pure-white);
+}
+
+.offers .offers-option-btn a:hover {
+  color: var(--pure-white);
+  text-decoration: none;
 }
 
 /* FORMULARZ ZGLOSZENIOWY */
@@ -524,6 +528,70 @@ hr {
 .error {
   color: red;
   font-weight: bold;
+}
+
+/* KONTAKT */
+.contact {
+  position: relative;
+  background-color: var(--light-white) ;
+  overflow: hidden;
+}
+
+.contact .white-block-left {
+  background-color: var(--dark);
+}
+
+.contact-form,
+.contact-form-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-label {
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+.contact-form-input {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+}
+
+.contact-form-textarea {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  min-height: 150px;
+}
+
+/* .contact-form-box{
+	display: flex;
+	align-items: center;
+} */
+
+.contact-form-btn {
+  align-self: flex-end;
+  margin: 10px 0;
+  padding: 1em;
+  width: 100%;
+  /* max-width: 300px; */
+  color: var(--pure-white);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--main-color) ;
+  cursor: pointer;
+}
+
+.contact-form-btn::before {
+  background-color: var(--green-color-hover) ;
 }
 
 /* PONIZEJ SA KOMPONENTY */
@@ -668,7 +736,7 @@ hr {
     width: 45%;
   }
 
-  .registration-form-btn {
+  .registration-form-btn, .contact-form-btn{
     width: 49.6%;
   }
   .registration-form-bck-btn {
@@ -735,5 +803,8 @@ hr {
 @media (min-width: 1100px) {
   .gardens-card {
     width: 30%;
+  }
+  .contact-form-btn{
+	width: 49.7%;
   }
 }
