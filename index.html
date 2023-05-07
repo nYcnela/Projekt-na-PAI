@@ -235,15 +235,17 @@
       <section class="registration section-padding white-section" id="registration">
         <h2 class="section-heading">Formualrz zgłoszeniowy</h2>
         <div class="wrapper">
-          <form class="registration-form">
+          <form class="registration-form" id="registration-form">
             <div class="registration-form-top">
               <label for="name" class="registration-form-label">Imię i nazwisko:</label>
-              <input type="text" class="registration-form-input" id="name" />
+              <input type="text" class="registration-form-input" id="name" name="name" />
+              <p class="error" id="nameError"></p>
 
               <label for="email" class="registration-form-label">Adres e-mail:</label>
-              <input type="text" id="email" class="registration-form-input" />
+              <input type="text" class="registration-form-input" id="email" name="email" />
+              <p class="error" id="emailError"></p>
 
-              <label for="garden">Wybrany Ogród:</label>
+              <label class="registration-form-label" for="garden">Wybrany Ogród:</label>
               <input
                 class="registration-form-input"
                 type="text"
@@ -253,12 +255,13 @@
                 title="Wybierz ogród"
                 required
               />
+              <p class="error" id="gardenError"></p>
               <datalist id="destination">
                 <option value="Ogród Kenroku-en"></option>
                 <option value="Portland Japanese Garden"></option>
                 <option value="Jardin Japonais"></option>
               </datalist>
-              <label>Ilość osób:</label>
+              <label class="registration-form-label">Ilość osób:</label>
               <div class="registration-form-box">
                 <input type="radio" name="numberOfPeople" id="1" value="W pojedynkę" required /> W pojedynkę
               </div>
@@ -266,17 +269,18 @@
               <div class="registration-form-box">
                 <input type="radio" name="numberOfPeople" id="group" value="Wyjazd grupowy" /> Wyjazd grupowy
               </div>
-              <label>Dodatkowe ubezpieczenie:</label>
+              <p class="error" id="numberOfPeopleError"></p>
+              <label class="registration-form-label">Dodatkowe ubezpieczenie:</label>
               <div class="registration-form-box"><input type="checkbox" name="insurance" id="insurance" /> Tak</div>
             </div>
 
             <label for="msg" class="registration-form-label">Wiadomość:</label>
-            <textarea name="" id="msg" class="registration-form-textarea"></textarea>
+            <textarea class="registration-form-textarea" id="msg" name="msg"></textarea>
             <div class="registration-btns">
-              <button type="button" class="registration-form-btn btn-special-animation">Sprawdź pogode</button>
-              <button type="button" class="registration-form-btn btn-special-animation">Przejrzyj dane</button>
+              <button type="button" class="registration-form-btn btn-special-animation" id="weather">Sprawdź pogode</button>
+              <button type="button" class="registration-form-btn btn-special-animation" id="data">Przejrzyj dane</button>
               <button type="reset" class="registration-form-btn btn-special-animation">Wyczyść</button>
-              <button type="submit" class="registration-form-btn btn-special-animation">Wyślij</button>
+              <button type="submit" class="registration-form-btn btn-special-animation" id="submit">Wyślij</button>
             </div>
           </form>
         </div>
