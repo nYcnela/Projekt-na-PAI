@@ -3,6 +3,7 @@ const navBtn = document.querySelector(".burger-btn");
 const allNavItems = document.querySelectorAll(".nav-item");
 const navBtnBars = document.querySelector(".burger-btn-bars");
 const submitBtn = document.getElementById("submit");
+const submitBtn2 = document.getElementById("submit2");
 const form = document.querySelector(".registration-form");
 const showDataBtn = document.getElementById("data");
 const dataContainer = document.createElement("div");
@@ -49,7 +50,7 @@ const handleNavItemsAnimation = () => {
 
 navBtn.addEventListener("click", handleNav);
 
-//funkcja odpowiedzialna na walidacje formularza
+//funkcja odpowiedzialna na walidacje formularza rejestracyjnego
 function validateForm() {
   const name = document.getElementById("name");
   const email = document.getElementById("email");
@@ -104,6 +105,51 @@ function validateForm() {
 
   return isValid;
 }
+
+// walidacja formularza kontaktowego
+function validateContactForm() {
+  const name = document.getElementById("name2");
+  const email = document.getElementById("email2");
+  const msg = document.getElementById("msg2");
+  const nameError = document.getElementById("nameError2");
+  const emailError = document.getElementById("emailError2");
+  const textAreaError = document.getElementById("textAreaError");
+  let isValid = true;
+
+  // Walidacja imienia i nazwiska
+  const nameRegex = /^[a-zA-Z]{1,20} [a-zA-Z]{1,40}$/;
+  if (!nameRegex.test(name.value.trim())) {
+    nameError.textContent = "Proszę wprowadzić poprawne imię i nazwisko";
+    isValid = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  // Walidacja e-mail
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  if (!emailRegex.test(email.value.trim())) {
+    emailError.textContent = "Proszę wprowadzić prawidłowy adres e-mail";
+    isValid = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  // Walidacja wiadomości
+  if (!msg.value.trim()) {
+    textAreaError.textContent = "Należy wpisać wiadomość kontaktową";
+    isValid = false;
+  } else {
+    textAreaError.textContent = "";
+  }
+
+  return isValid;
+}
+
+submitBtn2.addEventListener("click", (event) =>{
+    event.preventDefault();
+    validateContactForm();
+});
+
 
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
