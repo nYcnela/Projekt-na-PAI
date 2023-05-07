@@ -592,6 +592,24 @@ hr {
 }
 
 @media (min-width: 768px) {
+  .white-block {
+    height: 60px;
+    width: 45%;
+  }
+
+  .header-heading {
+    font-size: 6.6rem;
+  }
+
+  .header-text {
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+
+  .header-btn {
+    font-size: 1.6rem;
+  }
+
   .section-heading {
     font-size: 3.6rem;
   }
@@ -626,8 +644,21 @@ hr {
 }
 
 @media (min-width: 992px) {
+  .burger-btn {
+    top: 50px;
+    right: 50px;
+  }
+
   .header {
     background-image: var(--green-gradient), url(../Img/DomDuzy.jpg);
+  }
+
+  .header-heading{
+	font-size: 10rem;
+  }
+
+  .nav-item{
+	font-size: 4.8rem;
   }
 
   .section-heading {
@@ -638,12 +669,26 @@ hr {
     padding: 10em 2em;
   }
 
+  .hero-img{
+	padding: 40rem 2em;
+	background-image: var(--green-gradient), url(../Img/DrzewkaDuze.jpg);
+  }
+
   .hero-img hr {
     width: 90%;
     max-width: 900px;
   }
   .offers {
     background-image: var(--green-gradient), url("../Img/goryOgrodDuze.jpg");
+  }
+
+  .offers-option-img {
+	object-fit: cover;
+	height: 300px;
+  }
+  
+  .offers-option-text {
+	font-size: 1.5rem;
   }
 
   .registration-form-btn {
