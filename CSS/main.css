@@ -448,6 +448,7 @@ hr {
 
 .registration-form-box {
   margin-bottom: 2em;
+  text-transform: uppercase;
 }
 
 .registration-form-label {
@@ -494,6 +495,26 @@ hr {
 }
 .registration-form-btn::before {
   background-color: var(--green-color-hover);
+}
+
+.registration-form-bck-btn {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 800px;
+}
+
+.registration-data-container {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
 
 /* PONIZEJ SA KOMPONENTY */
@@ -641,6 +662,9 @@ hr {
   .registration-form-btn {
     width: 49.6%;
   }
+  .registration-form-bck-btn {
+    width: 70%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -653,12 +677,12 @@ hr {
     background-image: var(--green-gradient), url(../Img/DomDuzy.jpg);
   }
 
-  .header-heading{
-	font-size: 10rem;
+  .header-heading {
+    font-size: 10rem;
   }
 
-  .nav-item{
-	font-size: 4.8rem;
+  .nav-item {
+    font-size: 4.8rem;
   }
 
   .section-heading {
@@ -669,9 +693,9 @@ hr {
     padding: 10em 2em;
   }
 
-  .hero-img{
-	padding: 40rem 2em;
-	background-image: var(--green-gradient), url(../Img/DrzewkaDuze.jpg);
+  .hero-img {
+    padding: 40rem 2em;
+    background-image: var(--green-gradient), url(../Img/DrzewkaDuze.jpg);
   }
 
   .hero-img hr {
@@ -683,16 +707,19 @@ hr {
   }
 
   .offers-option-img {
-	object-fit: cover;
-	height: 300px;
+    object-fit: cover;
+    height: 300px;
   }
-  
+
   .offers-option-text {
-	font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .registration-form-btn {
     width: 49.7%;
+  }
+  .registration-form-bck-btn {
+    width: 55%;
   }
 }
 
