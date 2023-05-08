@@ -199,7 +199,7 @@
                 <p class="offers-option-text">
                     Zanurz się w świecie japońskich ogrodów i odkryj ich piękno na własną rękę. Odkrywaj niezwykłe zakątki i zrelaksuj się, podążając ścieżkami harmonii i spokoju. Poznaj różnorodność roślin i elementów ogrodowych, które zapewnią Ci niezapomniane wrażenia.
                 </p>
-                <p class="offers-option-text">Czerp inspirację z misternie zaprojektowanych przestrzeni, które promują samorealizację i duchowy rozwój. Wsłuchaj się w szepty natury i pozwól swojej duszy odnaleźć równowagę.</p>
+                
                 <button class="offers-option-btn btn-special-animation" id="single"><a href="#registration">Wybierz</a></button>
               </div>
             </div>
@@ -210,7 +210,7 @@
                 <p class="offers-option-text">
                     Ciesz się romantycznym wyjazdem z ukochaną osobą i odkrywajcie razem urok japońskich ogrodów. Wspólnie przeżyjcie niezapomniane chwile, spacerując wśród malowniczych stawów, mostków i kwitnących drzew. Pozwólcie sobie na chwilę wytchnienia od codzienności i zatopcie się w klimacie japońskiej natury.
                 </p>
-                <p class="offers-option-text">Razem z ukochaną osobą zanurzcie się w fascynującym świecie japońskiej kultury. Przeżyjcie niezapomniane chwile, odkrywając malownicze zakątki.</p>
+                
                 <button class="offers-option-btn btn-special-animation" id="couple"><a href="#registration">Wybierz</a></button>
               </div>
             </div>
@@ -221,7 +221,7 @@
                 <p class="offers-option-text">
                     Zbierz przyjaciół lub rodzinę i wybierzcie się na wspólną przygodę do magicznych japońskich ogrodów. Razem odkrywajcie niezwykłe elementy ogrodów, uczestniczcie w ciekawych warsztatach i wydarzeniach kulturalnych. Doskonała okazja do zacieśnienia więzi i wspólnego tworzenia wspomnień.
                 </p>
-                <p class="offers-option-text">Wspólnie z bliskimi cieszcie się niezwykłymi przeżyciami, które łączą pokolenia i kultury. Spróbujcie swoich sił w tradycyjnych japońskich warsztatach, budując ducha współpracy i wzajemnego zrozumienia.</p>
+                
                 <button class="offers-option-btn btn-special-animation" id="group"><a href="#registration">Wybierz</a></button>
               </div>
             </div>
@@ -230,7 +230,7 @@
       </section>
 
       <section class="registration section-padding white-section" id="registration">
-        <h2 class="section-heading">Formualrz zgłoszeniowy</h2>
+        <h2 class="section-heading" id="registration-heading">Formualrz zgłoszeniowy</h2>
         <div class="wrapper">
           <form class="registration-form" id="registration-form">
             <div class="registration-form-top">
@@ -281,6 +281,7 @@
             </div>
           </form>
         </div>
+        <div class="registration-weather-container" id="weather-container"></div>
       </section>
 
       <section class="section contact section-padding section white-section" id="contact">
@@ -311,6 +312,9 @@
         </div>
       </section>
     </main>
+
+    <!-- dodanie biblioteki axios w celu uzycia api pogodowego -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
