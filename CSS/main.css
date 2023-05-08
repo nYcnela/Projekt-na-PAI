@@ -286,7 +286,7 @@ hr {
 .gardens-card {
   position: relative;
   margin: 1em 0;
-  height: 450px;
+  height: 550px;
   color: var(--pure-white);
   text-align: center;
   perspective: 1000px;
@@ -316,6 +316,7 @@ hr {
   background-image: var(--green-gradient), url("../Img/JardinJaponaisMale.jpg");
 }
 .gardens-card-img-title {
+  font-size: 3rem;
   font-family: "Dancing Script", cursive;
 }
 .gardens-card-img-info {
@@ -344,6 +345,7 @@ hr {
 }
 .gardens-card-info-title {
   position: absolute;
+  width: 80%;
   left: 50%;
   transform: translateX(-50%);
   top: 1.2em;
@@ -352,6 +354,7 @@ hr {
 }
 .gardens-card-info-list {
   margin: 0 auto;
+  /* bottom: 0; */
   width: 70%;
   list-style: none;
 }
@@ -367,7 +370,7 @@ hr {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 2em;
+  bottom: 0;
   padding: 1em;
   border-radius: 8px;
   width: 80%;
@@ -433,8 +436,8 @@ hr {
   background-color: var(--green-color-hover);
 }
 
-.offers .offers-option-btn a{
-	display: block;
+.offers .offers-option-btn a {
+  display: block;
 }
 
 .offers .offers-option-btn a:visited {
@@ -468,7 +471,8 @@ hr {
   margin-bottom: 0.5em;
   text-transform: uppercase;
 }
-.registration-form-input {
+.registration-form-input,
+.weather-form-input {
   margin-bottom: 2em;
   padding: 0.6em 1.2em;
   background-color: var(--light-white);
@@ -506,12 +510,13 @@ hr {
   background-color: var(--main-color);
   cursor: pointer;
 }
-.registration-form-btn::before {
+.registration-form-btn::before,
+.weather-btn::before {
   background-color: var(--green-color-hover);
 }
 
 .registration-form-bck-btn {
-  margin: 0 auto;
+  margin: 30px auto;
   width: 80%;
   max-width: 800px;
 }
@@ -521,19 +526,113 @@ hr {
   text-transform: uppercase;
 }
 
+.registration-weather-container {
+  display: none;
+}
+
 .bold-font {
   font-weight: bold;
 }
 
-.error {
+.error,
+.weather-error {
   color: red;
   font-weight: bold;
+}
+
+/* OKIENKO OD POGODY */
+.app {
+  max-width: 100%;
+  padding: 20px 20px;
+  background-color: var(--light-white);
+  border-radius: 25px;
+}
+
+.app .section-heading {
+  margin: 0;
+}
+
+.top {
+  height: 260px;
+}
+
+.bottom {
+  height: 140px;
+}
+
+.main-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+}
+
+.main-info-smaller {
+  display: block;
+  text-align: center;
+}
+
+.city-name {
+  font-size: 20px;
+}
+
+.headings,
+.weather-info {
+  display: flex;
+  align-items: center;
+}
+
+.headings p,
+.weather-info p {
+  width: 33.3%;
+  text-align: center;
+}
+
+.headings {
+  height: 35%;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.bottom-display,
+.weather,
+.temperature,
+.humidity {
+  height: 65%;
+  font-size: 11px;
+}
+
+.photo {
+  display: none;
+}
+
+.weather-error {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.weather-form-input {
+  background-color: var(--pure-white);
+}
+
+.weather-btn {
+  margin: 10px;
+  padding: 1rem;
+  /* width: 100%; */
+  /* max-width: 300px; */
+  color: var(--pure-white);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--main-color);
+  cursor: pointer;
 }
 
 /* KONTAKT */
 .contact {
   position: relative;
-  background-color: var(--light-white) ;
+  background-color: var(--light-white);
   overflow: hidden;
 }
 
@@ -586,12 +685,12 @@ hr {
   color: var(--pure-white);
   border: none;
   border-radius: 8px;
-  background-color: var(--main-color) ;
+  background-color: var(--main-color);
   cursor: pointer;
 }
 
 .contact-form-btn::before {
-  background-color: var(--green-color-hover) ;
+  background-color: var(--green-color-hover);
 }
 
 /* PONIZEJ SA KOMPONENTY */
@@ -663,8 +762,11 @@ hr {
 /* SEKCJA MEDIA SLUZACA DO DOSTOSOWANIA STRONY DO ROZNYCH ROZDZIELCZOSCI */
 
 @media (min-width: 576px) {
+  .gardens-card {
+    height: 480px;
+  }
   .offers-option {
-    display: flex;
+    /* display: flex; */
     margin: 2em 0;
     width: 100%;
   }
@@ -686,6 +788,12 @@ hr {
   }
   .offers-option-btn {
     padding: 1em;
+  }
+  .app {
+    max-width: 90%;
+  }
+  .main-info-smaller {
+    display: block;
   }
 }
 
@@ -734,13 +842,36 @@ hr {
   .gardens-card {
     margin: 1em;
     width: 45%;
+    height: 520px;
   }
 
-  .registration-form-btn, .contact-form-btn{
+  .registration-form-btn,
+  .contact-form-btn {
     width: 49.6%;
   }
+
   .registration-form-bck-btn {
     width: 70%;
+  }
+
+  .app {
+    max-width: 800px;
+    padding: 20px 40px;
+  }
+  .photo {
+    display: block;
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+  }
+  .city-name {
+    font-size: 40px;
+  }
+  .bottom-display,
+  .weather,
+  .temperature,
+  .humidity {
+    font-size: 20px;
   }
 }
 
@@ -783,6 +914,10 @@ hr {
     background-image: var(--green-gradient), url("../Img/goryOgrodDuze.jpg");
   }
 
+  .offers-option {
+    display: flex;
+  }
+
   .offers-option-img {
     object-fit: cover;
     height: 300px;
@@ -802,9 +937,16 @@ hr {
 
 @media (min-width: 1100px) {
   .gardens-card {
+    height: 500px;
     width: 30%;
   }
-  .contact-form-btn{
-	width: 49.7%;
+  .contact-form-btn {
+    width: 49.7%;
+  }
+  .bottom-display,
+  .weather,
+  .temperature,
+  .humidity {
+    font-size: 26px;
   }
 }
