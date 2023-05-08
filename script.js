@@ -5,12 +5,16 @@ const navBtnBars = document.querySelector(".burger-btn-bars");
 const submitBtn = document.getElementById("submit");
 const submitBtn2 = document.getElementById("submit2");
 const form = document.querySelector(".registration-form");
+const registrationHeading = document.getElementById("registration-heading");
 const showDataBtn = document.getElementById("data");
-const dataContainer = document.createElement("div");
 const backButton = document.createElement("button");
 const singleBtn = document.getElementById("single");
 const coupleBtn = document.getElementById("couple");
 const groupBtn = document.getElementById("group");
+const weatherBtn = document.getElementById("weather");
+
+const dataContainer = document.createElement("div");
+const weatherContainer = document.getElementById("weather-container");
 
 backButton.textContent = "Wróć";
 backButton.classList.add("btn-special-animation", "registration-form-btn", "registration-form-bck-btn");
@@ -23,6 +27,8 @@ backButton.addEventListener("click", function () {
   form.style.display = "block";
   backButton.style.display = "none";
   dataContainer.style.display = "none";
+  weatherContainer.style.display = "none";
+  registrationHeading.style.display = "block";
 });
 
 const handleNav = () => {
@@ -145,11 +151,10 @@ function validateContactForm() {
   return isValid;
 }
 
-submitBtn2.addEventListener("click", (event) =>{
-    event.preventDefault();
-    validateContactForm();
+submitBtn2.addEventListener("click", (event) => {
+  event.preventDefault();
+  validateContactForm();
 });
-
 
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
@@ -209,3 +214,113 @@ function selectNumberOfPeopleOption(id) {
 singleBtn.addEventListener("click", () => selectNumberOfPeopleOption("1"));
 coupleBtn.addEventListener("click", () => selectNumberOfPeopleOption("2"));
 groupBtn.addEventListener("click", () => selectNumberOfPeopleOption("2+"));
+
+function displayWeather() {
+  weatherContainer.innerHTML = `
+        <div class="wrapper app">
+          <div class="top">
+              <h2 class="section-heading">Pogoda</h2>
+              <div class="main-info">
+                  <div class="main-info-smaller">
+                      <h3 class="city-name"></h3>
+                      <input type="text" class="weather-form-input" id="weather-input" placeholder="Wpisz nazwę miasta..."><button class="weather-btn btn-special-animation" id="weather-button">Sprawdź</button>
+                      <p class="weather-error"></p>
+                  </div>
+                  <img src="./img/unknown.png" alt="Obrazek przedstawiający pogodę" class="photo">
+              </div>
+          </div>
+          <div class="bottom">
+              <div class="headings">
+                  <p class="bottom-display">Pogoda:</p>
+                  <p class="bottom-display">Temperatura:</p>
+                  <p class="bottom-display">Wilgotność:</p>
+              </div>
+              <div class="weather-info">
+                  <p class="weather"></p>
+                  <p class="temperature"></p>
+                  <p class="humidity"></p>
+              </div>
+          </div>
+        </div>
+      `;
+  weatherContainer.appendChild(backButton);
+
+  form.style.display = "none";
+  registrationHeading.style.display = "none";
+  backButton.style.display = "block";
+  weatherContainer.style.display = "block";
+
+  // nasłuchiwanie zdarzeania w tym miejscu ze względu na dynamiczne generowanie okienka z pogoda
+  // nasłuchiwanie zdarzeania w tym miejscu ze względu na dynamiczne generowanie okienka z pogoda
+  const input = document.getElementById("weather-input");
+  const button = document.getElementById("weather-button");
+  const cityName = document.querySelector(".city-name");
+  const warning = document.querySelector(".weather-error");
+  const photo = document.querySelector(".photo");
+  const weather = document.querySelector(".weather");
+  const temperature = document.querySelector(".temperature");
+  const humidity = document.querySelector(".humidity");
+
+  const API_LINK = "https://api.openweathermap.org/data/2.5/weather?q=";
+  //tutaj nalezy wygenerowac swoj klucz api ze strony
+  //https://openweathermap.org/
+  const API_KEY = "&appid=153aac844927348361f7d6a49db760ff";
+  const API_UNITS = "&units=metric";
+  const API_LANGUAGE = "&lang=pl";
+
+  const getWeather = () => {
+    const input = document.getElementById("weather-input");
+    const city = input.value || "Lublin";
+    const URL = API_LINK + city + API_KEY + API_LANGUAGE + API_UNITS;
+
+    console.log(URL);
+    axios
+      .get(URL)
+      .then((res) => {
+        const temp = Math.floor(res.data.main.temp) + "°C";
+        const hum = res.data.main.humidity + "%";
+        const status = Object.assign({}, ...res.data.weather);
+
+        console.log(res);
+        temperature.textContent = temp;
+        humidity.textContent = hum;
+        cityName.textContent = res.data.name;
+        weather.textContent = status.description;
+
+        warning.textContent = "";
+        input.value = "";
+
+        if (status.id > 200 && status.id < 300) {
+          photo.setAttribute("src", "./img/thunderstorm.png");
+        } else if (status.id >= 300 && status.id < 400) {
+          photo.setAttribute("src", "./img/drizzle.png");
+        } else if (status.id >= 400 && status.id < 500) {
+          photo.setAttribute("src", "./img/rain.png");
+        } else if (status.id >= 500 && status.id < 600) {
+          photo.setAttribute("src", "./img/ice.png");
+        } else if (status.id >= 600 && status.id < 700) {
+          photo.setAttribute("src", "./img/fog.png");
+        } else if (status.id >= 700 && status.id < 800) {
+          photo.setAttribute("src", "./img/sun.png");
+        } else if (status.id >= 800 && status.id < 900) {
+          photo.setAttribute("src", "./img/cloud.png");
+        } else {
+          photo.setAttribute("src", "./img/unknown.png");
+        }
+      })
+      .catch(() => (warning.textContent = "Wpisz poprawna nazwe miasta!"));
+  };
+
+  getWeather();
+
+  const enterKeyCheck = (e) => {
+    if (e.key === "Enter") {
+      getWeather();
+    }
+  };
+
+  input.addEventListener("keyup", enterKeyCheck);
+  button.addEventListener("click", getWeather);
+}
+
+weatherBtn.addEventListener("click", displayWeather);
