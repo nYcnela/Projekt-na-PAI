@@ -573,6 +573,7 @@ hr {
 }
 
 .city-name {
+  display: flex;
   font-size: 20px;
 }
 
