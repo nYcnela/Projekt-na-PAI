@@ -264,7 +264,8 @@ function displayWeather() {
   const API_LINK = "https://api.openweathermap.org/data/2.5/weather?q=";
   //tutaj nalezy wygenerowac swoj klucz api ze strony
   //https://openweathermap.org/
-  const API_KEY = "&appid=153aac844927348361f7d6a49db760ff";
+  //const API_KEY = "&appid=(dodanie swojego klucza API)";
+  const API_KEY = "&appid=";
   const API_UNITS = "&units=metric";
   const API_LANGUAGE = "&lang=pl";
 
