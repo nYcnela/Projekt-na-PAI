@@ -8,9 +8,18 @@ const form = document.querySelector(".registration-form");
 const registrationHeading = document.getElementById("registration-heading");
 const showDataBtn = document.getElementById("data");
 const backButton = document.createElement("button");
+
+//elementy potrzebne do wypelniania formualrza wybranym ogrodem po kliknieciu guzika "wybierz" w sekcji ogrody
+const gardenInput = document.getElementById("garden");
+const kenrokuBtn = document.getElementById("kenrokuGarden");
+const portlandBtn = document.getElementById("portlandGarden");
+const jardinBtn = document.getElementById("jardinGarden");
+
+//elementy potrzebne do wypelniania formualrza wybrana iloscia osob po kliknieciu guzika "wybierz" w sekcji ofert
 const singleBtn = document.getElementById("single");
 const coupleBtn = document.getElementById("couple");
 const groupBtn = document.getElementById("group");
+
 const weatherBtn = document.getElementById("weather");
 
 const dataContainer = document.createElement("div");
@@ -205,6 +214,22 @@ function displayStoredData() {
     alert("Pamietaj aby najpierw przeslac dane!");
   }
 }
+
+function selectGarden(gardenName) {
+  gardenInput.value = gardenName;
+}
+
+kenrokuBtn.addEventListener("click", function () {
+  selectGarden("Ogród Kenroku-en");
+});
+
+portlandBtn.addEventListener("click", function () {
+  selectGarden("Portland Japanese Garden");
+});
+
+jardinBtn.addEventListener("click", function () {
+  selectGarden("Jardin Japonais");
+});
 
 function selectNumberOfPeopleOption(id) {
   const radioOption = document.getElementById(id);
