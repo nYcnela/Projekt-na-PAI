@@ -700,6 +700,58 @@ hr {
   background-color: var(--green-color-hover);
 }
 
+/* STOPKA */
+.footer {
+	color: var(--pure-white);
+	background-color: var(--dark);
+}
+
+.footer .wrapper {
+	padding: 6em 2em 2em;
+}
+
+.footer-box {
+	font-size: 1.4rem;
+}
+
+.footer-box-desktop {
+	display: none;
+}
+
+.footer-box-title {
+	margin-bottom: 1em;
+	font-size: 3rem;
+	text-transform: uppercase;
+}
+
+.footer-box-social {
+	margin: 2em 0 1em;
+}
+
+.footer-box-link {
+	padding: 0 0.3em;
+	font-size: 3.6rem;
+	color: var(--pure-white);
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.footer-box-link:first-child {
+	padding-left: 0;
+}
+
+.footer-box-link:hover {
+	color: var(--main-color);
+}
+
+.footer-bottom-text {
+	padding: 2em;
+	text-align: center;
+}
+
+
+
+
 /* PONIZEJ SA KOMPONENTY */
 .section-heading {
   position: relative;
@@ -882,6 +934,41 @@ hr {
   .humidity {
     font-size: 20px;
   }
+  .footer-boxes {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-box-desktop {
+    display: block;
+  }
+  
+  .footer-box {
+    margin: 0 2em;
+    width: 25%;
+  }
+  
+  .footer-box:first-child {
+    width: 50%;
+  }
+  
+  .footer-box-title {
+    font-size: 2.4rem;
+  }
+  
+  .footer-box-list {
+    list-style: none;
+  }
+  
+  .footer-box-list-item {
+    margin-bottom: 1em;
+  }
+  
+  .footer-box-list-item a {
+    color: var(--light-white);
+    text-decoration: none;
+  }
+  
 }
 
 @media (min-width: 992px) {
@@ -951,6 +1038,7 @@ hr {
 }
 
 @media (min-width: 1100px) {
+  
   .gardens-card {
     height: 500px;
     width: 30%;
