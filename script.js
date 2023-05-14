@@ -9,6 +9,8 @@ const registrationHeading = document.getElementById("registration-heading");
 const showDataBtn = document.getElementById("data");
 const backButton = document.createElement("button");
 
+const footerYear = document.querySelector('.footer-year')
+
 //elementy potrzebne do wypelniania formualrza wybranym ogrodem po kliknieciu guzika "wybierz" w sekcji ogrody
 const gardenInput = document.getElementById("garden");
 const kenrokuBtn = document.getElementById("kenrokuGarden");
@@ -350,3 +352,9 @@ function displayWeather() {
 }
 
 weatherBtn.addEventListener("click", displayWeather);
+
+const handleCurrentYear = () => {
+  const year = (new Date).getFullYear();
+  footerYear.innerText = year;
+}
+handleCurrentYear();
