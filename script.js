@@ -8,8 +8,8 @@ const form = document.querySelector(".registration-form");
 const registrationHeading = document.getElementById("registration-heading");
 const showDataBtn = document.getElementById("data");
 const backButton = document.createElement("button");
-
-const footerYear = document.querySelector('.footer-year')
+const allSections = document.querySelectorAll(".section");
+const footerYear = document.querySelector(".footer-year");
 
 //elementy potrzebne do wypelniania formualrza wybranym ogrodem po kliknieciu guzika "wybierz" w sekcji ogrody
 const gardenInput = document.getElementById("garden");
@@ -41,6 +41,21 @@ backButton.addEventListener("click", function () {
   weatherContainer.style.display = "none";
   registrationHeading.style.display = "block";
 });
+
+const handleObserver = () => {
+  const currentSection = window.scrollY;
+
+  allSections.forEach((section) => {
+    console.log(`currentSection: ${currentSection}, section.offsetTop: ${section.offsetTop}`);
+    if (section.classList.contains("white-section") && section.offsetTop <= currentSection + 65) {
+      navBtnBars.classList.add("black-bars-color");
+    } else if (!section.classList.contains("white-section") && section.offsetTop <= currentSection + 75) {
+      navBtnBars.classList.remove("black-bars-color");
+    }
+  });
+};
+
+window.addEventListener("scroll", handleObserver);
 
 const handleNav = () => {
   nav.classList.toggle("nav--active");
@@ -354,7 +369,7 @@ function displayWeather() {
 weatherBtn.addEventListener("click", displayWeather);
 
 const handleCurrentYear = () => {
-  const year = (new Date).getFullYear();
+  const year = new Date().getFullYear();
   footerYear.innerText = year;
-}
+};
 handleCurrentYear();
