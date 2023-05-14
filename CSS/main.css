@@ -436,7 +436,8 @@ hr {
   background-color: var(--green-color-hover);
 }
 
-.offers .offers-option-btn a {
+.offers .offers-option-btn a,
+.gardens-card-info-btn a {
   display: block;
 }
 
@@ -444,9 +445,13 @@ hr {
   color: var(--pure-white);
 }
 
-.offers .offers-option-btn a:hover {
+.offers .offers-option-btn a:hover,
+.gardens-card-info-btn a:hover {
   color: var(--pure-white);
   text-decoration: none;
+}
+.gardens-card-info-btn a:visited{
+  color: var(--dark);
 }
 
 /* FORMULARZ ZGLOSZENIOWY */
