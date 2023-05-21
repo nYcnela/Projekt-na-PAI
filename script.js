@@ -138,6 +138,42 @@ function validateForm() {
   return isValid;
 }
 
+function showData() {
+  let data = "Następujące dane zostaną przesłane:\n";
+  data += "Imie i Nazwisko: " + document.getElementById("name").value + "\n";
+  data += "Email: " + document.getElementById("email").value + "\n";
+  data += "Wybrany ogród: " + document.getElementById("garden").value + "\n";
+
+  let radios = document.getElementsByName("numberOfPeople");
+  let selectedRadio = "";
+  for (let index = 0; index < radios.length; index++) {
+    if (radios[index].checked) {
+      selectedRadio = radios[index].value;
+      break;
+    }
+  }
+  data += "Ilość osób: " + selectedRadio + "\n";
+
+  let insuranceChecked = document.getElementById("insurance").checked;
+  data += "Dodatkowe ubezpieczenie: " + (insuranceChecked ? "Tak" : "Nie") + "\n";
+
+  let msg = document.getElementById("msg").value;
+  if (msg.trim()) data += "Wiadomość: " + msg + "\n";
+
+  if (window.confirm(data)) return true;
+  else return false;
+}
+
+function showData2() {
+  let data = "Następujące dane zostaną przesłane:\n";
+  data += "Imie i Nazwisko: " + document.getElementById("name2").value + "\n";
+  data += "Email: " + document.getElementById("email2").value + "\n";
+  data += "Wiadomość: " + document.getElementById("msg2").value + "\n";
+
+  if (window.confirm(data)) return true;
+  else return false;
+}
+
 // walidacja formularza kontaktowego
 function validateContactForm() {
   const name = document.getElementById("name2");
@@ -179,12 +215,15 @@ function validateContactForm() {
 
 submitBtn2.addEventListener("click", (event) => {
   event.preventDefault();
-  validateContactForm();
+  if (validateContactForm()) {
+    showData2();
+  }
 });
 
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
   if (validateForm()) {
+    showData();
     saveDataToSessionStorage();
   }
 });
@@ -211,21 +250,49 @@ function displayStoredData() {
     const numberOfPeople = document.querySelector(`input[name="numberOfPeople"]:checked`).value;
     const insurance = document.getElementById("insurance").checked ? "Tak" : "Nie";
 
-    let messageHTML = dataObject.msg ? `<p><span class="bold-font">Wiadomość:</span> ${dataObject.msg}</p>` : "";
+    let messageHTML = dataObject.msg
+      ? `<p class="message"><span class="bold-font">Wiadomość:</span> ${dataObject.msg} <br><button class="edit-btn" data-key="msg">Edytuj</button></p>`
+      : "";
 
     dataContainer.innerHTML = `
-  <p><span class="bold-font">Imię i nazwisko:</span> ${dataObject.name}</p>
-  <p><span class="bold-font">Adres e-mail:</span> ${dataObject.email}</p>
-  <p><span class="bold-font">Wybrany Ogród:</span> ${dataObject.garden}</p>
-  <p><span class="bold-font">Ilość osób:</span> ${numberOfPeople}</p>
-  <p><span class="bold-font">Dodatkowe ubezpieczenie:</span> ${insurance}</p>
-  ${messageHTML}
-`;
+      <p><span class="bold-font">Imię i nazwisko:</span> ${dataObject.name}</p>
+      <p><span class="bold-font">Adres e-mail:</span> ${dataObject.email}</p>
+      <p><span class="bold-font">Wybrany Ogród:</span> ${dataObject.garden}</p>
+      <p><span class="bold-font">Ilość osób:</span> ${numberOfPeople}</p>
+      <p><span class="bold-font">Dodatkowe ubezpieczenie:</span> ${insurance}</p>
+      ${messageHTML}
+      <button id="delete-btn">Usuń dane</button>
+    `;
     dataContainer.appendChild(backButton);
 
     form.style.display = "none";
     backButton.style.display = "block";
     dataContainer.style.display = "block";
+
+    // Dodajemy Event Listener do przycisków edycji
+    const editBtn = document.querySelectorAll(".edit-btn");
+    editBtn.forEach((button) => {
+      button.addEventListener("click", function () {
+        const key = this.dataset.key; // Klucz do edycji w obiekcie
+        const newValue = prompt("Wprowadź nową wartość:");
+        if (newValue) {
+          dataObject[key] = newValue; // Uaktualniamy wartość w obiekcie
+          sessionStorage.setItem("registrationData", JSON.stringify(dataObject)); // Zapisujemy zmieniony obiekt do sessionStorage
+          displayStoredData(); // Odświeżamy wyświetlane dane
+        }
+      });
+    });
+
+    // Dodajemy Event Listener do przycisku usuwania
+    const deleteButton = document.getElementById("delete-btn");
+    deleteButton.classList.add("btn-special-animation", "registration-form-btn", "registration-form-bck-btn");
+    deleteButton.style.marginBottom = "0";
+    deleteButton.addEventListener("click", function () {
+      if (confirm("Czy na pewno chcesz usunąć wszystkie dane?")) {
+        sessionStorage.removeItem("registrationData");
+        location.reload();
+      }
+    });
   } else {
     validateForm();
     alert("Pamietaj aby najpierw przeslac dane!");
@@ -292,8 +359,6 @@ function displayWeather() {
   backButton.style.display = "block";
   weatherContainer.style.display = "block";
 
-  // nasłuchiwanie zdarzeania w tym miejscu ze względu na dynamiczne generowanie okienka z pogoda
-  // nasłuchiwanie zdarzeania w tym miejscu ze względu na dynamiczne generowanie okienka z pogoda
   const input = document.getElementById("weather-input");
   const button = document.getElementById("weather-button");
   const cityName = document.querySelector(".city-name");
@@ -334,21 +399,21 @@ function displayWeather() {
         input.value = "";
 
         if (status.id > 200 && status.id < 300) {
-          photo.setAttribute("src", "./img/thunderstorm.png");
+          photo.setAttribute("src", "./img_api/thunderstorm.png");
         } else if (status.id >= 300 && status.id < 400) {
-          photo.setAttribute("src", "./img/drizzle.png");
+          photo.setAttribute("src", "./img_api/drizzle.png");
         } else if (status.id >= 400 && status.id < 500) {
-          photo.setAttribute("src", "./img/rain.png");
+          photo.setAttribute("src", "./img_api/rain.png");
         } else if (status.id >= 500 && status.id < 600) {
-          photo.setAttribute("src", "./img/ice.png");
+          photo.setAttribute("src", "./img_api/ice.png");
         } else if (status.id >= 600 && status.id < 700) {
-          photo.setAttribute("src", "./img/fog.png");
+          photo.setAttribute("src", "./img_api/fog.png");
         } else if (status.id >= 700 && status.id < 800) {
-          photo.setAttribute("src", "./img/sun.png");
+          photo.setAttribute("src", "./img_api/sun.png");
         } else if (status.id >= 800 && status.id < 900) {
-          photo.setAttribute("src", "./img/cloud.png");
+          photo.setAttribute("src", "./img_api/cloud.png");
         } else {
-          photo.setAttribute("src", "./img/unknown.png");
+          photo.setAttribute("src", "./img_api/unknown.png");
         }
       })
       .catch(() => (warning.textContent = "Wpisz poprawna nazwe miasta!"));
