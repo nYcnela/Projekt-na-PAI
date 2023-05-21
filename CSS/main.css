@@ -1,30 +1,19 @@
 :root {
   /*zdefiniowanie kolorow uzywanych w projekcie*/
-  /* --main-color: #1755e7; */
   --main-color: #395d44;
   --secondary-color: #164dcc;
   --pure-white: #fff;
   --light-white: #eee;
   --dark: #2e2e2e;
   --green-color: #00ffaa;
-  /* --green-color-hover: #0fe29c; */
-  /* --green-color-hover: #0db588; */
   --green-color-hover: #0a9b76;
 
   --light-blue-gradient: linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75));
   --light-green-gradient: linear-gradient(45deg, rgba(90, 200, 110, 0.75), rgba(20, 150, 50, 0.75));
   --blue-gradient: linear-gradient(45deg, rgba(20, 105, 241, 0.75), rgba(42, 10, 184, 0.75));
-  /* w miare jasny jest ten zielony*/
-  /* --green-gradient: linear-gradient(45deg, rgba(90, 156, 110, 0.75), rgba(34, 139, 34, 0.75)); */
   --green-gradient: linear-gradient(45deg, rgba(70, 128, 96, 0.75), rgba(10, 100, 20, 0.75));
   --green-gradient-secondary: linear-gradient(45deg, rgba(50, 160, 80, 0.75), rgba(15, 120, 40, 0.75));
-  --purple-gradient: linear-gradient(45deg, rgba(190, 10, 214, 0.75), rgba(68, 0, 255, 0.75));
-  --blue-gradient-solid: linear-gradient(45deg, rgb(20, 105, 241), rgb(42, 10, 184));
-  /* ten jest troche ciemniejszy niz ten nizej */
-  /* --green-gradient-solid: linear-gradient(45deg, rgb(70, 128, 96), rgb(10, 100, 20)); */
   --green-gradient-solid: linear-gradient(45deg, rgb(104, 194, 126), rgb(40, 148, 48));
-
-  --light-blue-gradient-solid: radial-gradient(circle at top right, rgb(0, 78, 255) 0%, rgb(0, 212, 255) 100%);
   --light-green-gradient-solid: radial-gradient(circle at top right, rgb(10, 100, 20) 0%, rgb(70, 128, 96) 100%);
 }
 
@@ -208,7 +197,7 @@ body {
   color: var(--pure-white);
   background-image: var(--green-gradient), url(../Img/DomMaly.jpg);
   background-size: cover;
-  background-position: fixed;
+  background-position: center;
   background-attachment: scroll;
 }
 
@@ -251,7 +240,6 @@ body {
 
 /* GALERIA */
 .gallery {
-  /* cos tam */
   color: black;
 }
 
@@ -299,13 +287,13 @@ hr {
   transform: rotateY(0);
   opacity: 1;
 }
-.gardens-card-img {
-  padding: 2em;
-  height: 100%;
-  border-radius: 8px;
-  background-size: cover;
-  transition: transform 1s, opacity 1s;
-}
+  .gardens-card-img {
+    padding: 2em;
+    height: 100%;
+    border-radius: 8px;
+    background-size: cover;
+    transition: transform 1s, opacity 1s;
+  }
 .gardens-card-img--first {
   background-image: var(--light-green-gradient), url("../Img/KenrokuMaly.jpg");
 }
@@ -354,7 +342,6 @@ hr {
 }
 .gardens-card-info-list {
   margin: 0 auto;
-  /* bottom: 0; */
   width: 70%;
   list-style: none;
 }
@@ -376,8 +363,15 @@ hr {
   width: 80%;
   border: none;
   background-color: var(--green-color);
+  color: var(--dark);
   cursor: pointer;
 }
+
+.gardens-card-info-btn:hover{
+  text-decoration: none;
+  color: var(--pure-white);
+}
+
 .gardens-card-info-btn::before {
   background-color: var(--green-color-hover);
 }
@@ -418,7 +412,7 @@ hr {
   font-weight: 300;
 }
 .offers .offers-option-text {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   font-size: 1.3rem;
   color: var(--dark);
 }
@@ -428,10 +422,16 @@ hr {
   width: 100%;
   color: var(--pure-white);
   background-color: var(--main-color);
+  text-align: center;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
+
+.offers-option-btn:hover{
+  text-decoration: none;
+}
+
 .offers .offers-option-btn:before {
   background-color: var(--green-color-hover);
 }
@@ -450,9 +450,10 @@ hr {
   color: var(--pure-white);
   text-decoration: none;
 }
-.gardens-card-info-btn a:visited{
+/* a:visited{
   color: var(--dark);
-}
+  text-decoration: none
+} */
 
 /* FORMULARZ ZGLOSZENIOWY */
 .registration {
@@ -508,7 +509,6 @@ hr {
   padding: 1em;
   margin: 10px 0;
   width: 100%;
-  /* max-width: 326px; */
   color: var(--pure-white);
   border: none;
   border-radius: 8px;
@@ -524,6 +524,15 @@ hr {
   margin: 30px auto;
   width: 80%;
   max-width: 800px;
+}
+
+.edit-btn{
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: var(--pure-white);
 }
 
 .registration-data-container {
@@ -627,8 +636,6 @@ hr {
 .weather-btn {
   margin: 10px;
   padding: 1rem;
-  /* width: 100%; */
-  /* max-width: 300px; */
   color: var(--pure-white);
   border: none;
   border-radius: 8px;
@@ -678,10 +685,6 @@ hr {
   min-height: 150px;
 }
 
-/* .contact-form-box{
-	display: flex;
-	align-items: center;
-} */
 
 .contact-form-btn {
   align-self: flex-end;
@@ -762,6 +765,11 @@ hr {
   text-align: center;
   color: var(--main-color);
   letter-spacing: 2px;
+}
+
+.message {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* KLASA ODPOWIADAJACA ZA ANIMACJE PRZEJSCIA NA GUZIKACH */
@@ -916,6 +924,10 @@ hr {
 
   .registration-form-bck-btn {
     width: 70%;
+  }
+
+  .city-name{
+    justify-content: start;
   }
 
   .app {
